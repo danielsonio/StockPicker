@@ -11,18 +11,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    open: {
-      type: DataTypes.FLOAT,
-      allowNull: false
-    },
-    high: {
-      type: DataTypes.FLOAT,
-      allowNull: false
-    },
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
+    boughtorsold: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
   });
   return Stock;
 }

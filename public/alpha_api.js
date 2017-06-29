@@ -43,9 +43,8 @@ $("#stock-submit").on("click", function() {
     var newStock = {
       symbol: response[object][symbol],
       price: price,
-      open: open,
-      high: high,
-      quantity: quantity
+      quantity: quantity,
+      boughtorsold: false,
     };
 
     console.log(newStock.symbol);
