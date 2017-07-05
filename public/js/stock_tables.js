@@ -108,7 +108,7 @@
          // We have access to the todos as an argument inside of the callback function
          console.log(data);
          console.log(data[0].boughtorsold);
-         
+
 
          for (var i = 0; i < data.length; i++) {
              //go though the response and take all the buy orders, insert them into a portfolio holder, check if a stock of the same name was purchased
@@ -143,8 +143,27 @@
                  }
              }
          }
-         console.log(portfolio);
+         
      }).then(function() {
+        ;
+             for (var i = 0; i < portfolio.length; i++) {
+                 var apiKey = "&apikey=MOU4Y0ZQ72U6K0JF"
+                 var tickerSymbol = portfolio[i].symbol;
+                 var queryURL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + tickerSymbol + apiKey;
+                 var object = "Realtime Global Securities Quote";
+                 var latest_price = "03. Latest Price";
+
+                 $.ajax({
+                     url: queryURL,
+                     method: "GET",
+                 }).done(function(response) {
+                    portfolio[i].price = response[object][latest_price];
+                     console.log (response[object][latest_price]);
+                 })
+
+             }
+             console.log(portfolio);
+         }).then(function() {
          $('#myPort').DataTable({
              responsive: true,
              "searching": false,

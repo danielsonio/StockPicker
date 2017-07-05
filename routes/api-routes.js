@@ -60,7 +60,6 @@ module.exports = function(app) {
      app.get("/api/transactions", function(req, res) {
 
         db.Stock.findAll({where: {
-                 id: 1
              }}).then(function(dbStock) {
             res.json(dbStock);
         });
